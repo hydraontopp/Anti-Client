@@ -1,0 +1,45 @@
+Update Order (Sigs First):
+RenderContext ( renderCtxAddr )
+Keymap Sig ( keymapAddr )
+ActorHook ( hookAddr )
+ClientInstance ( localPlayerAddr )
+SendChatMsg ( chatMsgSigAddr )
+RenderText ( renderTextAddr )
+Signatures in modules
+
+How to update:
+1. RenderContext & RenderText {
+RenderText:
+	Go to main menu.
+	Open Cheat Engine and attach it to your game.
+	Search Type String.
+	Go to Realms tab.
+	Search in CE "Join Realm".
+	Do find what accesses each result.
+	If you get one result it is probably the right spot.
+	Click the result and then click "Show Disassembler"
+	Then Right Click and click "Select Current Function"
+	Now double click the spot it brought you to and right "ret" then press ok
+	Go to your mc and press escape one then go back to realms tab and if there is no more text that is the right render text address.
+	Make sure you have this plugin (https://www.mediafire.com/file/ca2ue1zsagh6hwe/CESigMaker_[unknowncheats.me]_.dll/file) installed in ce (if you dont I really could care less to explain how to instal it). Right click the address (after you reloaded your game and found it again, if you dont do this it will give u a sig with the ret and nop's which isint good).
+	Then click "Generate Signature" then click "No".
+	That should be a working rendertext signature after u capitalize all the non capitalized things.
+RenderContext:
+	**To get this sig you need to have found render text or just use an already existing sig for it**
+	Open Cheat Engine and attach it to your game.
+	Select the type as "Array of byte" and turn writable box to grey.
+	Paste the render text signature in and click "First Scan".
+	Click on the result and press Ctrl + D.
+	Copy the first 2 lines of bytes by clicking shift on the second option so the first 2 lines are highlighted.
+	Then right click and click "Copy to Clipboard -> Bytes Only (No address)"
+	Paste the copied bytes into the search bar.
+	Press new scan.
+	Shift click all the results of Minecraft.Windows.Exe and press the red arrow to copy all selected items to the address list.
+	Now u must CRTL + D every address one by one and double click where it brings you and click "Select current function" then right and replace with the word "ret" until your game stops rendering.
+	**Note: There are sometimes more then 1 address that makes your game stop rendering. It is trial and error and u have to try all of em.**
+	Once you have an address that stops rendering your game, copy the value then reload your game, paste the value in the search bar then first scan (after you reattached CE to your game).
+	CRTL + D the result and click "Select Current Function" then right click where it brings you, and click "Generate Signature -> No".
+	And to check if you have a valid Render Context paste it in renderCtxAddr and see if when injecting your game loads the arraylist, clickgui, etc...
+
+	There you go, thats how u find RenderText and RenderContext.
+}
